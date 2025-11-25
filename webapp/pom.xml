@@ -1,6 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
@@ -15,41 +15,31 @@
   <artifactId>webapp</artifactId>
   <packaging>war</packaging>
   <name>Webapp</name>
-  <description>Webapp.</description>
+  <description>Web application module</description>
 
-  <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-    <maven.compiler.release>21</maven.compiler.release>
-  </properties>
+  <!-- ❗ Remove compiler settings — parent handles Java version -->
 
   <build>
     <finalName>${project.artifactId}</finalName>
 
     <plugins>
+
+      <!-- Jetty plugin (optional, but kept for compatibility) -->
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>8.0.0.M1</version> <!-- use the version from your parent POM pluginManagement -->
+        <version>8.0.0.M1</version>
       </plugin>
 
-             <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
+      <!-- WAR Plugin -->
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-          <release>${maven.compiler.release}</release>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 
